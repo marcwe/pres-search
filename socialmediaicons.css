@@ -1,0 +1,55 @@
+@charset "UTF-8";
+	
+		
+	
+		
+		
+/* EndOAWidget_Instance_2535022 */
+
+#blockicon {
+	display: block;
+	width: 40px;
+	background-position: 0 px -22px;
+	float: left;
+	-webkit-transition: all 0.5s ease-in-out 0s;
+	-moz-transition: all 0.5s ease-in-out 0s;
+	-ms-transition: all 0.5s ease-in-out 0s;
+	-o-transition: all 0.5s ease-in-out 0s;
+	transition: all 0.5s ease-in-out 0s;
+}
+
+
+
+
+
+#block-block-2 { /*header social buttons*/
+	bottom: 0;
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+}
+
+
+
+		
+		
+		/* Font Info */
+		
+#blockicon:hover {
+	margin-top: 10px;
+}
+box text {
+	font-size: 9px;
+}
+#placeholder {
+	-webkit-transition: all 0.5s ease-in-out 0s;
+	-moz-transition: all 0.5s ease-in-out 0s;
+	-ms-transition: all 0.5s ease-in-out 0s;
+	-o-transition: all 0.5s ease-in-out 0s;
+	transition: all 0.5s ease-in-out 0s;
+}
+#placeholder:hover {
+	-webkit-opacity: .7;
+	-moz-opacity: .7;
+	opacity: .7;
+}

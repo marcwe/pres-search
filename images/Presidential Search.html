@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PresidentialSearch</title>
+
+
+<style type="text/css">
+
+<!--
+body {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	font-family: "Adobe Caslon Pro";
+	font-size: 100%;
+	line-height: 1.4;
+	background-image: url(images/bg.png);
+	background-color: transparent;
+	background-repeat: repeat;
+}
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing block. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 10px; /* adding the padding to the sides of the elements within the blocks, instead of the block elements themselves, gets rid of any box model math. A nested block with side padding can also be used as an alternate method. */
+	background-color: #FFF;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	-webkit-transition: all 0.5s ease-in-out 0.1s;
+	-moz-transition: all 0.5s ease-in-out 0.1s;
+	-ms-transition: all 0.5s ease-in-out 0.1s;
+	-o-transition: all 0.5s ease-in-out 0.1s;
+	transition: all 0.5s ease-in-out 0.1s;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #003366;
+	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #003366;
+	text-decoration: none;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+/* ~~ This fixed width container surrounds all other blocks ~~ */
+.container {
+	width: 775px;
+	background-color: #FFFFFF; /* the auto value on the sides, coupled with the width, centers the layout */
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: 50px;
+}
+/* ~~ The header is not given a width. It will extend the full width of your layout. ~~ */
+header {
+	background-color: #FFFFFF;
+}
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the left instead of the right, simply float these columns the opposite direction (all left instead of all right) and they'll render in reverse order. There's no need to move the blocks around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 175px;
+	background-color: #FFFFFF;
+	padding-bottom: 5px;
+	text-transform: capitalize;
+	padding-right: 10px;
+	-webkit-transition: all 0.5s ease-in-out 0s;
+	-moz-transition: all 0.5s ease-in-out 0s;
+	-ms-transition: all 0.5s ease-in-out 0s;
+	-o-transition: all 0.5s ease-in-out 0s;
+	transition: all 0.5s ease-in-out 0s;
+	padding-left: 10px;
+	margin-top: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 575px;
+	float: left;
+}
+aside {
+	float: left;
+	width: 180px;
+	background-color: #EADCAE;
+	padding: 10px 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 2px solid #CCC; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+	background-color: #CCC;
+}
+ul.nav li {
+	border-bottom: 2px solid #CCC; /* this creates the button separation */
+	background-color: #FFF;
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	width: 175px;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	background-color: #FFFFFF;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: #CCCCCC;
+	color: #FFF;
+	-webkit-transition: all 0.3s ease-in 0s;
+	-moz-transition: all 0.3s ease-in 0s;
+	-ms-transition: all 0.3s ease-in 0s;
+	-o-transition: all 0.3s ease-in 0s;
+	transition: all 0.3s ease-in 0s;
+	width: 175px;
+}
+
+/* ~~ The footer ~~ */
+
+}
+/* ~~ Miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty block element as the final element following the last floated block (within the .container) if the footer is removed or taken out of the .container */
+	clear: both;
+	height: 0;
+	font-size: 1px;
+	line-height: 0px;
+	background-color: #CCC;
+}
+
+/*HTML 5 support - Sets new HTML 5 tags to display:block so browsers know how to render the tags properly. */
+header, section, footer, aside, article, figure {
+	display: block;
+	padding-left: 0px;
+	margin-left: 0px;
+	padding-right: 0px;
+}
+.container .content div {
+	font-family: Georgia, Times New Roman, Times, serif;
+	padding-right: 8px;
+	padding-left: 0px;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FC0	
+}
+a:active {
+	text-decoration: none;
+	padding-left: 10px;
+}
+a {
+	font-family: Calibri;
+	font-size: 100%;
+}
+body,td,th {
+	font-family: Calibri;
+}
+
+
+.footer2 {
+	padding: 10px 0;
+	background-color: #036;
+	text-align: center;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	color: #FFF;
+}
+#apDiv1 {
+	position: absolute;
+	width: 801px;
+	height: 22px;
+	z-index: 1;
+	left: 115px;
+	top: 36px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	overflow: hidden;
+	background-color: #CCCCCC;
+}
+a img:hover {
+	-webkit-opacity: .2;
+	-moz-opacity: .2;
+	opacity: .2;
+}
+#Header {
+	background-image: url(images/px881_PresSearch_header.png);
+	height: 228px;
+	margin-top: 0px;
+	background-repeat: no-repeat;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div>
+  <div class="container">
+    <header>
+     
+<div align="right" style="float: none; padding-top: 0px; padding-right: 10px; display: block;"><img src="images/headertransparent.png" width="500" height="45" align="left"><a href="http://pcom.edu/"><img src="images/PCOM.png" width="100" height="45" border="0"></a></div>
+<div>
+        <div>
+          <div id="Header"></div>
+         
+        </div>
+      </div>
+    </header>
+    <div class="sidebar1">
+      <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Position Profile</a></li>
+        <li><a href="#">About the search</a></li>
+        <li><a href="#">PCOM Presidents</a></li>
+        <li><a href="#">Updates</a></li>
+      </ul>
+      <!-- end .sidebar1 -->
+    </div> 
+    <article class="content">
+      <div>
+        <div align="center">
+          <div align="center">
+            <h2 style="font-size: 21px; color: #900; text-align: left;">Message from President <span style="text-align: center"></span>Schure</h2>
+          </div>
+        </div>
+      </div>
+      <section>
+        <div class="fltlft"><img src="images/President-Schure.png" width="166" height="210" hspace="5"></div>
+        <p>Every day for the past twelve years, I have been enveloped by the joy of being part of the Philadelphia College of Osteopathic Medicine community.  That joy stems from the high purpose of our instructional, research, and service missions, and the dedication and enabling support our faculty, staff, students, alumni, trustees, and friends bring to their fulfillment.  No words can adequately express my pride in a community that eleven years ago—through a bold strategic planning process—began to foresee its future, and which has brought that future to reality.  Today, PCOM is in a much stronger position—academically, physically, and financially.  We are a multi-disciplinary, multi-cultural, multi-campus, multi-accredited institution that holds a steadfast commitment to meaningful education and experience, to accountability, to transparency, and to vision.  Moreover, the climate of collegiality, camaraderie, and mutual respect in which our work is accomplished is an inspiration.  How privileged I am to walk life&rsquo;s journey with all of you!</p>
+        <p>Because we have accomplished so much together, and the College has proven its efficacy, now is an appropriate time to effect a natural transition in PCOM&rsquo;s administration.  Accordingly, I have shared with the PCOM Board of Trustees my intention to retire as President and Chief Executive Officer effective June 30, 2014.  The Board has, with extraordinary kindness, accepted my retirement decision and desire to spend more time with my family.</p>
+        <p>During the next 18 months, I look forward to working closely with you to achieve and fulfill many PCOM milestones, including the successful conclusion of our forthcoming Accreditation Council for Pharmacy Education and Middle States accreditations.  And during this period, I have every expectation that the PCOM Board of Trustees—a board that has shown immeasurable vision, wisdom, and commitment—will guide the College community through a search process that will culminate in the selection of an outstanding president to lead PCOM in the years to come.</p>
+        <p>To all of you who contribute daily to the Mission of our College, I am humbled as I offer my profound thanks.  My years spent at PCOM have been more rewarding and fulfilling than I ever could have imagined.  The same will certainly be true of our next 18 months.</p>
+        <h3><span style="color: #036; font-style: italic;">Matthew Schure , PhD<br />
+          President and Chief Executive Officer</span></h3>
+        <hr>
+        <div> <table width="145" border="0" align="right" cellpadding="2" cellspacing="2" class="fltrt">
+        <tr>
+          <td height="49"><a href="http://www.facebook.com/pages/Philadelphia-College-of-Osteopathic-Medicine/97289578558?ref=nf"><img src="images/fb.png" width="25" height="25" align="right"></a></td>
+          <td><a href="http://www.youtube.com/PCOMeducation"><img src="images/Youtube.png" width="25" height="25" align="right"></a></td>
+          <td><a href="http://www.pcom.edu/General_Information/blogger/blog.html"><img src="images/blogger.png" width="25" height="25" align="right"></a></td>
+          <td><a href="http://www.issuu.com/pcomeducation"><img src="images/issue.png" width="25" height="25" align="right"></a></td>
+          <td><a href="http://pinterest.com/pcomeducation/"><img src="images/pintrist.png" width="25" height="25" align="right"></a></td>
+        </tr>
+    </table></div>
+      </section>
+      <!-- end .content -->
+    </article>
+    <footer>
+      <div class="footer2">&copy;<span style="line-height: 5%; font-size: 14px"> 2013 Philadelphia College of Osteopathic Medicine &#8226; 4180 City Ave, Philadelphia , PA 19131 <br>
+        <br>
+      </span></div>
+    </footer>
+    <!-- end .container -->
+  </div>
+</div>
+</body>
+
+</html>
